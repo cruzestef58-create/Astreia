@@ -2463,7 +2463,9 @@ const Comptes=(function(){
     const r=await fetch("/api/"+voie,{method:"POST",
       headers:{"content-type":"application/json"}, body:JSON.stringify(corps||{})});
     let d={}; try{ d=await r.json(); }catch(e){}
-    if(!r.ok) throw new Error(d.err||"Le serveur n'a pas répondu.");
+    // Toujours donner un motif exploitable : un « le serveur n'a pas répondu »
+    // sec n'apprend rien, ni au joueur ni a celui qui debogue.
+    if(!r.ok) throw new Error(d.err || `Le serveur a répondu ${r.status} sans explication.`);
     return d;
   }
   function poser(j){

@@ -15,7 +15,11 @@
  * PBKDF2-SHA256 est conserve, avec un sel propre a chaque compte.
  */
 
-const TOURS = 210000;                       // iterations PBKDF2
+// Cloudflare plafonne les iterations PBKDF2 dans son runtime : au-dela,
+// deriveBits leve une exception et le Worker rend une 500 en HTML. 100 000
+// passe, et reste un cout honnete. Chaque compte garde le nombre de tours
+// avec lequel il a ete cree, donc changer cette valeur ne casse rien.
+const TOURS = 100000;
 const DUREE_JETON = 90 * 24 * 3600 * 1000;  // 90 jours
 const TAILLE_MORCEAU = 96 * 1024;           // le stockage borne la taille par cle
 const MAX_DONNEES = 2 * 1024 * 1024;        // 2 Mo de fiches par compte
@@ -106,6 +110,15 @@ export class Comptes {
     let corps = {};
     if (req.method === "POST") { try { corps = await req.json(); } catch { corps = {}; } }
 
+    try {
+      return await this.router(voie, corps);
+    } catch (e) {
+      console.error("comptes:" + voie, e && e.stack || e);
+      return json({ ok: false, err: "Le registre a rencontre une erreur : " + (e && e.message || e) }, 500);
+    }
+  }
+
+  async router(voie, corps) {
     switch (voie) {
       case "inscription":  return this.inscription(corps);
       case "connexion":    return this.connexion(corps);
