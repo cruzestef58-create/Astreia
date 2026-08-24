@@ -1,0 +1,2545 @@
+{
+ "rev": 0,
+ "updatedAt": null,
+ "updatedBy": null,
+ "titre": "Les Chroniques d’Astréïa",
+ "maps": [
+  {
+   "key": "grand-hall",
+   "nom": "Grand Hall",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "elvaris",
+   "cols": 30,
+   "rows": 22,
+   "notes": "L’entrée d’Elvaris. Les nouveaux venus arrivent par la porte sud.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     20
+    ],
+    [
+     0,
+     21,
+     13,
+     1
+    ],
+    [
+     0,
+     0,
+     14,
+     1
+    ],
+    [
+     16,
+     0,
+     14,
+     1
+    ],
+    [
+     17,
+     21,
+     13,
+     1
+    ],
+    [
+     29,
+     1,
+     1,
+     20
+    ],
+    [
+     8,
+     4,
+     1,
+     3
+    ],
+    [
+     21,
+     4,
+     1,
+     3
+    ]
+   ],
+   "deco": [
+    [
+     "pilier",
+     7,
+     7,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     22,
+     7,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     7,
+     11,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     22,
+     11,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     7,
+     15,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     22,
+     15,
+     1,
+     1
+    ],
+    [
+     "tapis",
+     12,
+     5,
+     6,
+     14
+    ],
+    [
+     "autel",
+     13,
+     2,
+     4,
+     2
+    ],
+    [
+     "feu",
+     3,
+     3,
+     1,
+     1
+    ],
+    [
+     "feu",
+     26,
+     3,
+     1,
+     1
+    ],
+    [
+     "feu",
+     3,
+     18,
+     1,
+     1
+    ],
+    [
+     "feu",
+     26,
+     18,
+     1,
+     1
+    ],
+    [
+     "porte",
+     13,
+     21,
+     4,
+     1
+    ]
+   ],
+   "tokens": [],
+   "id": "m-grand-hall"
+  },
+  {
+   "key": "couloirs",
+   "nom": "Couloirs du Rez",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "elvaris",
+   "cols": 34,
+   "rows": 22,
+   "notes": "Les couloirs interminables. Idéal pour une poursuite ou une rencontre.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     8
+    ],
+    [
+     0,
+     13,
+     1,
+     8
+    ],
+    [
+     0,
+     0,
+     15,
+     1
+    ],
+    [
+     0,
+     21,
+     15,
+     1
+    ],
+    [
+     19,
+     0,
+     15,
+     1
+    ],
+    [
+     19,
+     21,
+     15,
+     1
+    ],
+    [
+     33,
+     1,
+     1,
+     8
+    ],
+    [
+     33,
+     13,
+     1,
+     8
+    ],
+    [
+     6,
+     6,
+     9,
+     1
+    ],
+    [
+     6,
+     6,
+     1,
+     4
+    ],
+    [
+     19,
+     6,
+     9,
+     1
+    ],
+    [
+     27,
+     6,
+     1,
+     4
+    ],
+    [
+     6,
+     15,
+     9,
+     1
+    ],
+    [
+     6,
+     12,
+     1,
+     4
+    ],
+    [
+     19,
+     15,
+     9,
+     1
+    ],
+    [
+     27,
+     12,
+     1,
+     4
+    ]
+   ],
+   "deco": [
+    [
+     "pilier",
+     12,
+     4,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     21,
+     4,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     12,
+     17,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     21,
+     17,
+     1,
+     1
+    ],
+    [
+     "feu",
+     8,
+     8,
+     1,
+     1
+    ],
+    [
+     "feu",
+     25,
+     8,
+     1,
+     1
+    ],
+    [
+     "feu",
+     8,
+     13,
+     1,
+     1
+    ],
+    [
+     "feu",
+     25,
+     13,
+     1,
+     1
+    ]
+   ],
+   "tokens": [],
+   "id": "m-couloirs"
+  },
+  {
+   "key": "bibliotheque",
+   "nom": "Grande Bibliothèque",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "biblio",
+   "cols": 30,
+   "rows": 24,
+   "notes": "Le domaine des Eldrane. La section interdite est au fond, à l’est.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     22
+    ],
+    [
+     0,
+     23,
+     14,
+     1
+    ],
+    [
+     0,
+     0,
+     30,
+     1
+    ],
+    [
+     17,
+     23,
+     13,
+     1
+    ],
+    [
+     29,
+     1,
+     1,
+     22
+    ],
+    [
+     22,
+     1,
+     1,
+     14
+    ],
+    [
+     22,
+     18,
+     1,
+     5
+    ]
+   ],
+   "deco": [
+    [
+     "etagere",
+     3,
+     3,
+     1,
+     8
+    ],
+    [
+     "etagere",
+     6,
+     3,
+     1,
+     8
+    ],
+    [
+     "etagere",
+     9,
+     3,
+     1,
+     8
+    ],
+    [
+     "etagere",
+     12,
+     3,
+     1,
+     8
+    ],
+    [
+     "etagere",
+     15,
+     3,
+     1,
+     8
+    ],
+    [
+     "etagere",
+     18,
+     3,
+     1,
+     8
+    ],
+    [
+     "etagere",
+     3,
+     14,
+     1,
+     7
+    ],
+    [
+     "etagere",
+     6,
+     14,
+     1,
+     7
+    ],
+    [
+     "etagere",
+     9,
+     14,
+     1,
+     7
+    ],
+    [
+     "etagere",
+     12,
+     14,
+     1,
+     7
+    ],
+    [
+     "etagere",
+     15,
+     14,
+     1,
+     7
+    ],
+    [
+     "etagere",
+     18,
+     14,
+     1,
+     7
+    ],
+    [
+     "table",
+     24,
+     4,
+     4,
+     2
+    ],
+    [
+     "table",
+     24,
+     9,
+     4,
+     2
+    ],
+    [
+     "autel",
+     24,
+     18,
+     4,
+     3
+    ],
+    [
+     "porte",
+     22,
+     15,
+     1,
+     3
+    ],
+    [
+     "feu",
+     26,
+     14,
+     1,
+     1
+    ]
+   ],
+   "tokens": [],
+   "id": "m-bibliotheque"
+  },
+  {
+   "key": "entrainement",
+   "nom": "Salle d’entraînement",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "arene",
+   "cols": 28,
+   "rows": 22,
+   "notes": "Où l’on apprend à maîtriser son Flux sans démolir le château.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     20
+    ],
+    [
+     0,
+     0,
+     12,
+     1
+    ],
+    [
+     0,
+     21,
+     28,
+     1
+    ],
+    [
+     16,
+     0,
+     12,
+     1
+    ],
+    [
+     27,
+     1,
+     1,
+     20
+    ]
+   ],
+   "deco": [
+    [
+     "tapis",
+     6,
+     5,
+     16,
+     12
+    ],
+    [
+     "pilier",
+     6,
+     5,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     21,
+     5,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     6,
+     16,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     21,
+     16,
+     1,
+     1
+    ],
+    [
+     "table",
+     2,
+     3,
+     2,
+     4
+    ],
+    [
+     "table",
+     24,
+     3,
+     2,
+     4
+    ],
+    [
+     "table",
+     2,
+     15,
+     2,
+     4
+    ],
+    [
+     "table",
+     24,
+     15,
+     2,
+     4
+    ]
+   ],
+   "tokens": [],
+   "id": "m-entrainement"
+  },
+  {
+   "key": "refectoire",
+   "nom": "Réfectoire",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "elvaris",
+   "cols": 28,
+   "rows": 20,
+   "notes": "Quatre grandes tables, une par Maison. Les tensions se voient à table.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     7
+    ],
+    [
+     0,
+     12,
+     1,
+     7
+    ],
+    [
+     0,
+     0,
+     28,
+     1
+    ],
+    [
+     0,
+     19,
+     28,
+     1
+    ],
+    [
+     27,
+     1,
+     1,
+     7
+    ],
+    [
+     27,
+     12,
+     1,
+     7
+    ]
+   ],
+   "deco": [
+    [
+     "table",
+     4,
+     3,
+     3,
+     14
+    ],
+    [
+     "table",
+     9,
+     3,
+     3,
+     14
+    ],
+    [
+     "table",
+     15,
+     3,
+     3,
+     14
+    ],
+    [
+     "table",
+     20,
+     3,
+     3,
+     14
+    ],
+    [
+     "feu",
+     2,
+     2,
+     1,
+     1
+    ],
+    [
+     "feu",
+     25,
+     2,
+     1,
+     1
+    ],
+    [
+     "feu",
+     2,
+     17,
+     1,
+     1
+    ],
+    [
+     "feu",
+     25,
+     17,
+     1,
+     1
+    ]
+   ],
+   "tokens": [],
+   "id": "m-refectoire"
+  },
+  {
+   "key": "cour",
+   "nom": "Cour intérieure",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "monts",
+   "cols": 30,
+   "rows": 26,
+   "notes": "À ciel ouvert, cernée par le cloître. La brume descend parfois jusqu’ici.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     24
+    ],
+    [
+     0,
+     0,
+     14,
+     1
+    ],
+    [
+     0,
+     25,
+     14,
+     1
+    ],
+    [
+     17,
+     0,
+     13,
+     1
+    ],
+    [
+     17,
+     25,
+     13,
+     1
+    ],
+    [
+     29,
+     1,
+     1,
+     24
+    ]
+   ],
+   "deco": [
+    [
+     "pilier",
+     4,
+     4,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     8,
+     4,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     12,
+     4,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     17,
+     4,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     21,
+     4,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     25,
+     4,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     4,
+     21,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     8,
+     21,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     12,
+     21,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     17,
+     21,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     21,
+     21,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     25,
+     21,
+     1,
+     1
+    ],
+    [
+     "eau",
+     12,
+     10,
+     6,
+     6
+    ],
+    [
+     "autel",
+     14,
+     12,
+     2,
+     2
+    ],
+    [
+     "tapis",
+     4,
+     12,
+     3,
+     3
+    ],
+    [
+     "tapis",
+     23,
+     12,
+     3,
+     3
+    ]
+   ],
+   "tokens": [],
+   "id": "m-cour"
+  },
+  {
+   "key": "escaliers",
+   "nom": "Escalier des Tours",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "elvaris",
+   "cols": 22,
+   "rows": 28,
+   "notes": "Un puits vertical. Chaque palier ouvre sur une tour différente.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     26
+    ],
+    [
+     0,
+     27,
+     9,
+     1
+    ],
+    [
+     0,
+     0,
+     22,
+     1
+    ],
+    [
+     13,
+     27,
+     9,
+     1
+    ],
+    [
+     21,
+     1,
+     1,
+     26
+    ],
+    [
+     6,
+     5,
+     10,
+     1
+    ],
+    [
+     6,
+     11,
+     10,
+     1
+    ],
+    [
+     6,
+     17,
+     10,
+     1
+    ],
+    [
+     6,
+     23,
+     10,
+     1
+    ],
+    [
+     6,
+     5,
+     1,
+     6
+    ],
+    [
+     15,
+     11,
+     1,
+     6
+    ],
+    [
+     6,
+     17,
+     1,
+     6
+    ]
+   ],
+   "deco": [
+    [
+     "feu",
+     2,
+     3,
+     1,
+     1
+    ],
+    [
+     "feu",
+     19,
+     9,
+     1,
+     1
+    ],
+    [
+     "feu",
+     2,
+     15,
+     1,
+     1
+    ],
+    [
+     "feu",
+     19,
+     21,
+     1,
+     1
+    ],
+    [
+     "porte",
+     1,
+     8,
+     1,
+     2
+    ],
+    [
+     "porte",
+     20,
+     14,
+     1,
+     2
+    ],
+    [
+     "porte",
+     1,
+     20,
+     1,
+     2
+    ]
+   ],
+   "tokens": [],
+   "id": "m-escaliers"
+  },
+  {
+   "key": "astrolabe",
+   "nom": "Tour de l’Astrolabe",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "coeur",
+   "cols": 24,
+   "rows": 24,
+   "notes": "Au sommet. On y lit les Flux comme on lit le ciel.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     22
+    ],
+    [
+     0,
+     23,
+     11,
+     1
+    ],
+    [
+     0,
+     0,
+     24,
+     1
+    ],
+    [
+     13,
+     23,
+     11,
+     1
+    ],
+    [
+     23,
+     1,
+     1,
+     22
+    ]
+   ],
+   "deco": [
+    [
+     "pilier",
+     5,
+     5,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     18,
+     5,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     5,
+     11,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     18,
+     11,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     5,
+     18,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     18,
+     18,
+     1,
+     1
+    ],
+    [
+     "autel",
+     10,
+     10,
+     4,
+     4
+    ],
+    [
+     "tapis",
+     8,
+     8,
+     8,
+     8
+    ],
+    [
+     "table",
+     3,
+     3,
+     3,
+     2
+    ],
+    [
+     "table",
+     18,
+     19,
+     3,
+     2
+    ]
+   ],
+   "tokens": [],
+   "id": "m-astrolabe"
+  },
+  {
+   "key": "interdites",
+   "nom": "Salles interdites",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "elvaris",
+   "cols": 26,
+   "rows": 20,
+   "notes": "Scellées après la Nuit des Quatre Couronnes. Les murs y sont brisés.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     7
+    ],
+    [
+     0,
+     11,
+     1,
+     8
+    ],
+    [
+     0,
+     0,
+     26,
+     1
+    ],
+    [
+     0,
+     19,
+     26,
+     1
+    ],
+    [
+     25,
+     1,
+     1,
+     18
+    ],
+    [
+     7,
+     1,
+     1,
+     6
+    ],
+    [
+     7,
+     10,
+     1,
+     4
+    ],
+    [
+     13,
+     5,
+     1,
+     9
+    ],
+    [
+     18,
+     1,
+     1,
+     5
+    ],
+    [
+     18,
+     9,
+     1,
+     10
+    ]
+   ],
+   "deco": [
+    [
+     "autel",
+     20,
+     8,
+     4,
+     4
+    ],
+    [
+     "table",
+     3,
+     14,
+     3,
+     2
+    ],
+    [
+     "tapis",
+     9,
+     15,
+     3,
+     3
+    ],
+    [
+     "porte",
+     18,
+     6,
+     1,
+     3
+    ]
+   ],
+   "tokens": [],
+   "id": "m-interdites"
+  },
+  {
+   "key": "passages",
+   "nom": "Passages secrets",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "caverne",
+   "cols": 34,
+   "rows": 18,
+   "notes": "Étroits, sinueux, et pas toujours au même endroit qu’hier.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     16
+    ],
+    [
+     0,
+     0,
+     34,
+     1
+    ],
+    [
+     0,
+     17,
+     34,
+     1
+    ],
+    [
+     33,
+     1,
+     1,
+     16
+    ],
+    [
+     4,
+     1,
+     1,
+     10
+    ],
+    [
+     4,
+     13,
+     1,
+     4
+    ],
+    [
+     9,
+     4,
+     1,
+     13
+    ],
+    [
+     14,
+     1,
+     1,
+     12
+    ],
+    [
+     19,
+     6,
+     1,
+     11
+    ],
+    [
+     24,
+     1,
+     1,
+     11
+    ],
+    [
+     29,
+     5,
+     1,
+     12
+    ]
+   ],
+   "deco": [
+    [
+     "feu",
+     6,
+     15,
+     1,
+     1
+    ],
+    [
+     "feu",
+     21,
+     3,
+     1,
+     1
+    ],
+    [
+     "feu",
+     31,
+     14,
+     1,
+     1
+    ]
+   ],
+   "tokens": [],
+   "id": "m-passages"
+  },
+  {
+   "key": "dortoir-dravaryn",
+   "nom": "Quartier Dravaryn",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "elvaris",
+   "cols": 26,
+   "rows": 18,
+   "notes": "Les appartements de la Maison Dravaryn. On n’y entre pas sans invitation.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     16
+    ],
+    [
+     0,
+     17,
+     12,
+     1
+    ],
+    [
+     0,
+     0,
+     26,
+     1
+    ],
+    [
+     15,
+     17,
+     11,
+     1
+    ],
+    [
+     25,
+     1,
+     1,
+     16
+    ],
+    [
+     12,
+     1,
+     1,
+     9
+    ]
+   ],
+   "deco": [
+    [
+     "table",
+     3,
+     3,
+     3,
+     2
+    ],
+    [
+     "table",
+     3,
+     8,
+     3,
+     2
+    ],
+    [
+     "table",
+     3,
+     13,
+     3,
+     2
+    ],
+    [
+     "table",
+     20,
+     3,
+     3,
+     2
+    ],
+    [
+     "table",
+     20,
+     8,
+     3,
+     2
+    ],
+    [
+     "table",
+     20,
+     13,
+     3,
+     2
+    ],
+    [
+     "tapis",
+     9,
+     12,
+     8,
+     4
+    ],
+    [
+     "feu",
+     12,
+     2,
+     1,
+     1
+    ],
+    [
+     "etagere",
+     8,
+     3,
+     1,
+     5
+    ],
+    [
+     "etagere",
+     17,
+     3,
+     1,
+     5
+    ]
+   ],
+   "tokens": [],
+   "id": "m-dortoir-dravaryn"
+  },
+  {
+   "key": "dortoir-vaelith",
+   "nom": "Quartier Vaelith",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "elvaris",
+   "cols": 26,
+   "rows": 18,
+   "notes": "Les appartements de la Maison Vaelith. On n’y entre pas sans invitation.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     16
+    ],
+    [
+     0,
+     17,
+     12,
+     1
+    ],
+    [
+     0,
+     0,
+     26,
+     1
+    ],
+    [
+     15,
+     17,
+     11,
+     1
+    ],
+    [
+     25,
+     1,
+     1,
+     16
+    ],
+    [
+     12,
+     1,
+     1,
+     9
+    ]
+   ],
+   "deco": [
+    [
+     "table",
+     3,
+     3,
+     3,
+     2
+    ],
+    [
+     "table",
+     3,
+     8,
+     3,
+     2
+    ],
+    [
+     "table",
+     3,
+     13,
+     3,
+     2
+    ],
+    [
+     "table",
+     20,
+     3,
+     3,
+     2
+    ],
+    [
+     "table",
+     20,
+     8,
+     3,
+     2
+    ],
+    [
+     "table",
+     20,
+     13,
+     3,
+     2
+    ],
+    [
+     "tapis",
+     9,
+     12,
+     8,
+     4
+    ],
+    [
+     "feu",
+     12,
+     2,
+     1,
+     1
+    ],
+    [
+     "etagere",
+     8,
+     3,
+     1,
+     5
+    ],
+    [
+     "etagere",
+     17,
+     3,
+     1,
+     5
+    ]
+   ],
+   "tokens": [],
+   "id": "m-dortoir-vaelith"
+  },
+  {
+   "key": "dortoir-eldrane",
+   "nom": "Quartier Eldrane",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "elvaris",
+   "cols": 26,
+   "rows": 18,
+   "notes": "Les appartements de la Maison Eldrane. On n’y entre pas sans invitation.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     16
+    ],
+    [
+     0,
+     17,
+     12,
+     1
+    ],
+    [
+     0,
+     0,
+     26,
+     1
+    ],
+    [
+     15,
+     17,
+     11,
+     1
+    ],
+    [
+     25,
+     1,
+     1,
+     16
+    ],
+    [
+     12,
+     1,
+     1,
+     9
+    ]
+   ],
+   "deco": [
+    [
+     "table",
+     3,
+     3,
+     3,
+     2
+    ],
+    [
+     "table",
+     3,
+     8,
+     3,
+     2
+    ],
+    [
+     "table",
+     3,
+     13,
+     3,
+     2
+    ],
+    [
+     "table",
+     20,
+     3,
+     3,
+     2
+    ],
+    [
+     "table",
+     20,
+     8,
+     3,
+     2
+    ],
+    [
+     "table",
+     20,
+     13,
+     3,
+     2
+    ],
+    [
+     "tapis",
+     9,
+     12,
+     8,
+     4
+    ],
+    [
+     "feu",
+     12,
+     2,
+     1,
+     1
+    ],
+    [
+     "etagere",
+     8,
+     3,
+     1,
+     5
+    ],
+    [
+     "etagere",
+     17,
+     3,
+     1,
+     5
+    ]
+   ],
+   "tokens": [],
+   "id": "m-dortoir-eldrane"
+  },
+  {
+   "key": "dortoir-noctheris",
+   "nom": "Quartier Noctheris",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "elvaris",
+   "cols": 26,
+   "rows": 18,
+   "notes": "Les appartements de la Maison Noctheris. On n’y entre pas sans invitation.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     16
+    ],
+    [
+     0,
+     17,
+     12,
+     1
+    ],
+    [
+     0,
+     0,
+     26,
+     1
+    ],
+    [
+     15,
+     17,
+     11,
+     1
+    ],
+    [
+     25,
+     1,
+     1,
+     16
+    ],
+    [
+     12,
+     1,
+     1,
+     9
+    ]
+   ],
+   "deco": [
+    [
+     "table",
+     3,
+     3,
+     3,
+     2
+    ],
+    [
+     "table",
+     3,
+     8,
+     3,
+     2
+    ],
+    [
+     "table",
+     3,
+     13,
+     3,
+     2
+    ],
+    [
+     "table",
+     20,
+     3,
+     3,
+     2
+    ],
+    [
+     "table",
+     20,
+     8,
+     3,
+     2
+    ],
+    [
+     "table",
+     20,
+     13,
+     3,
+     2
+    ],
+    [
+     "tapis",
+     9,
+     12,
+     8,
+     4
+    ],
+    [
+     "feu",
+     12,
+     2,
+     1,
+     1
+    ],
+    [
+     "etagere",
+     8,
+     3,
+     1,
+     5
+    ],
+    [
+     "etagere",
+     17,
+     3,
+     1,
+     5
+    ]
+   ],
+   "tokens": [],
+   "id": "m-dortoir-noctheris"
+  },
+  {
+   "key": "quatre-couronnes",
+   "nom": "Salle des Quatre Couronnes",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "elvaris",
+   "cols": 28,
+   "rows": 28,
+   "notes": "Là où l’accord fut signé. Quatre trônes, aucun plus haut que l’autre.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     26
+    ],
+    [
+     0,
+     27,
+     13,
+     1
+    ],
+    [
+     0,
+     0,
+     28,
+     1
+    ],
+    [
+     16,
+     27,
+     12,
+     1
+    ],
+    [
+     27,
+     1,
+     1,
+     26
+    ]
+   ],
+   "deco": [
+    [
+     "autel",
+     13,
+     2,
+     3,
+     2
+    ],
+    [
+     "autel",
+     2,
+     13,
+     2,
+     3
+    ],
+    [
+     "autel",
+     24,
+     13,
+     2,
+     3
+    ],
+    [
+     "autel",
+     13,
+     24,
+     3,
+     2
+    ],
+    [
+     "tapis",
+     10,
+     10,
+     8,
+     8
+    ],
+    [
+     "eau",
+     13,
+     13,
+     2,
+     2
+    ],
+    [
+     "pilier",
+     6,
+     6,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     21,
+     6,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     6,
+     21,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     21,
+     21,
+     1,
+     1
+    ]
+   ],
+   "tokens": [],
+   "id": "m-quatre-couronnes"
+  },
+  {
+   "key": "coeur-astral",
+   "nom": "Chambre du Cœur Astral",
+   "lieu": "Forteresse d’Elvaris",
+   "terrain": "coeur",
+   "cols": 26,
+   "rows": 26,
+   "notes": "Scellée depuis des siècles. Personne ne sait ce qu’il y a derrière la porte.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     24
+    ],
+    [
+     0,
+     0,
+     26,
+     1
+    ],
+    [
+     0,
+     25,
+     26,
+     1
+    ],
+    [
+     25,
+     1,
+     1,
+     24
+    ]
+   ],
+   "deco": [
+    [
+     "porte",
+     11,
+     25,
+     4,
+     1
+    ],
+    [
+     "autel",
+     11,
+     11,
+     4,
+     4
+    ],
+    [
+     "pilier",
+     4,
+     4,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     21,
+     4,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     4,
+     12,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     21,
+     12,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     4,
+     21,
+     1,
+     1
+    ],
+    [
+     "pilier",
+     21,
+     21,
+     1,
+     1
+    ],
+    [
+     "tapis",
+     8,
+     8,
+     10,
+     10
+    ]
+   ],
+   "tokens": [],
+   "id": "m-coeur-astral"
+  },
+  {
+   "key": "sentier",
+   "nom": "Sentier des Monts",
+   "lieu": "Monts Brumeux",
+   "terrain": "monts",
+   "cols": 36,
+   "rows": 20,
+   "notes": "La seule voie praticable vers Elvaris. Étroite, exposée.",
+   "murs": [
+    [
+     0,
+     0,
+     36,
+     3
+    ],
+    [
+     0,
+     17,
+     36,
+     3
+    ],
+    [
+     8,
+     3,
+     3,
+     4
+    ],
+    [
+     20,
+     13,
+     4,
+     4
+    ],
+    [
+     29,
+     3,
+     3,
+     5
+    ]
+   ],
+   "deco": [
+    [
+     "eau",
+     12,
+     8,
+     5,
+     3
+    ],
+    [
+     "feu",
+     33,
+     9,
+     1,
+     1
+    ]
+   ],
+   "tokens": [],
+   "id": "m-sentier"
+  },
+  {
+   "key": "plateau-brumeux",
+   "nom": "Plateau brumeux",
+   "lieu": "Monts Brumeux",
+   "terrain": "monts",
+   "cols": 32,
+   "rows": 24,
+   "notes": "Un espace ouvert où la brume avale les distances. Terrain de rencontre.",
+   "murs": [
+    [
+     5,
+     5,
+     3,
+     3
+    ],
+    [
+     24,
+     4,
+     4,
+     3
+    ],
+    [
+     9,
+     17,
+     4,
+     3
+    ],
+    [
+     22,
+     16,
+     3,
+     4
+    ]
+   ],
+   "deco": [
+    [
+     "eau",
+     14,
+     10,
+     6,
+     5
+    ],
+    [
+     "autel",
+     15,
+     4,
+     2,
+     2
+    ]
+   ],
+   "tokens": [],
+   "id": "m-plateau-brumeux"
+  },
+  {
+   "key": "crypte",
+   "nom": "Crypte des Monts",
+   "lieu": "Souterrains",
+   "terrain": "caverne",
+   "cols": 28,
+   "rows": 22,
+   "notes": "Sous la montagne. Ce qui y dort n’est pas répertorié au Codex.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     20
+    ],
+    [
+     0,
+     0,
+     13,
+     1
+    ],
+    [
+     0,
+     21,
+     28,
+     1
+    ],
+    [
+     16,
+     0,
+     12,
+     1
+    ],
+    [
+     27,
+     1,
+     1,
+     20
+    ],
+    [
+     6,
+     6,
+     1,
+     11
+    ],
+    [
+     12,
+     4,
+     1,
+     8
+    ],
+    [
+     12,
+     15,
+     1,
+     6
+    ],
+    [
+     19,
+     6,
+     1,
+     11
+    ]
+   ],
+   "deco": [
+    [
+     "autel",
+     22,
+     9,
+     4,
+     4
+    ],
+    [
+     "feu",
+     9,
+     5,
+     1,
+     1
+    ],
+    [
+     "feu",
+     16,
+     17,
+     1,
+     1
+    ],
+    [
+     "eau",
+     8,
+     12,
+     3,
+     6
+    ]
+   ],
+   "tokens": [],
+   "id": "m-crypte"
+  },
+  {
+   "key": "faille",
+   "nom": "Faille astrale",
+   "lieu": "Ailleurs",
+   "terrain": "anomalie",
+   "cols": 30,
+   "rows": 22,
+   "notes": "Une anomalie ouverte. La géographie n’y tient pas en place.",
+   "murs": [
+    [
+     6,
+     6,
+     4,
+     2
+    ],
+    [
+     20,
+     5,
+     3,
+     3
+    ],
+    [
+     10,
+     15,
+     5,
+     2
+    ],
+    [
+     23,
+     14,
+     3,
+     4
+    ]
+   ],
+   "deco": [
+    [
+     "autel",
+     14,
+     10,
+     3,
+     3
+    ],
+    [
+     "eau",
+     4,
+     12,
+     4,
+     4
+    ],
+    [
+     "eau",
+     24,
+     3,
+     4,
+     3
+    ]
+   ],
+   "tokens": [],
+   "id": "m-faille"
+  },
+  {
+   "key": "arrivee",
+   "nom": "Le lieu d’arrivée",
+   "lieu": "Ailleurs",
+   "terrain": "monts",
+   "cols": 28,
+   "rows": 20,
+   "notes": "Là où les âmes reconnues se réveillent, sans comprendre comment.",
+   "murs": [
+    [
+     3,
+     3,
+     2,
+     2
+    ],
+    [
+     23,
+     4,
+     2,
+     2
+    ],
+    [
+     5,
+     15,
+     3,
+     2
+    ],
+    [
+     21,
+     14,
+     2,
+     3
+    ]
+   ],
+   "deco": [
+    [
+     "autel",
+     13,
+     9,
+     3,
+     3
+    ],
+    [
+     "tapis",
+     11,
+     7,
+     7,
+     7
+    ]
+   ],
+   "tokens": [],
+   "id": "m-arrivee"
+  },
+  {
+   "key": "vierge",
+   "nom": "Carte vierge",
+   "lieu": "Ailleurs",
+   "terrain": "elvaris",
+   "cols": 30,
+   "rows": 22,
+   "notes": "À toi de la remplir. Change l’ambiance dans la barre du haut.",
+   "murs": [
+    [
+     0,
+     1,
+     1,
+     20
+    ],
+    [
+     0,
+     21,
+     14,
+     1
+    ],
+    [
+     0,
+     0,
+     30,
+     1
+    ],
+    [
+     17,
+     21,
+     13,
+     1
+    ],
+    [
+     29,
+     1,
+     1,
+     20
+    ]
+   ],
+   "deco": [],
+   "tokens": [],
+   "id": "m-vierge"
+  }
+ ],
+ "activeMapId": "m-grand-hall",
+ "initiative": [],
+ "turn": 0,
+ "codex": [
+  {
+   "id": "seed-b7246d4f",
+   "cat": "Histoire",
+   "titre": "L’Astréïon",
+   "corps": "À l’origine de toute chose existait une énergie primordiale : l’Astréïon.\n\nIl n’était pas simplement une source d’énergie. Il était la vie, la volonté, l’esprit, la magie, la matière, la mort — le potentiel de toute chose.\n\nToutes les formes d’énergie connues dans Astréïa en proviennent indirectement. Nul ne sait s’il était une énergie, une entité, ou quelque chose de plus ancien encore."
+  },
+  {
+   "id": "seed-0101b123",
+   "cat": "Histoire",
+   "titre": "La Fracture Céleste",
+   "corps": "Il y a environ 900 ans, l’Astréïon se brisa. Son énergie se dispersa dans le monde et prit différentes formes : les Flux.\n\nC’est pourquoi des systèmes de pouvoir complètement différents coexistent dans le même monde.\n\nPersonne ne connaît la véritable cause. Certains accusent un ancien sorcier. D’autres, une divinité qui aurait tenté de contrôler l’Astréïon. D’autres encore pensent qu’il s’est brisé de lui-même.\n\n(La vérité doit rester un mystère au début de l’aventure.)"
+  },
+  {
+   "id": "seed-f58ad82c",
+   "cat": "Histoire",
+   "titre": "La Nuit des Quatre Couronnes",
+   "corps": "Il y a environ 200 ans, les quatre Maisons entrèrent en conflit — pour une raison encore partiellement inconnue.\n\nToutes cherchaient le contrôle d’un même lieu : la Chambre du Cœur Astral.\n\nUn accord mit fin à la guerre. Les affrontements cessèrent officiellement. Les tensions, elles, n’ont jamais disparu."
+  },
+  {
+   "id": "seed-5bc9e8e0",
+   "cat": "Histoire",
+   "titre": "Les Anomalies",
+   "corps": "Depuis quelques années, quelque chose change. Les Flux deviennent instables.\n\n· des objets changent momentanément de nature\n· des zones du château se transforment\n· certaines personnes développent des capacités inhabituelles\n· des créatures inconnues apparaissent\n· des Flux semblent parfois se mélanger\n· des souvenirs peuvent être altérés\n· des portes apparaissent là où il n’y en avait pas\n\nCes événements deviennent de plus en plus fréquents au fil de la campagne."
+  },
+  {
+   "id": "seed-94c35867",
+   "cat": "Histoire",
+   "titre": "La Prophétie Brisée",
+   "corps": "Retrouvée dans une partie interdite de la bibliothèque :\n\n« Lorsque les Quatre se rencontreront en un seul cœur,\nl’Astréïon choisira son hôte.\nLe monde sera sauvé…\nou consumé. »\n\nSa signification réelle doit rester inconnue au début. Le Gardien la révèle progressivement."
+  },
+  {
+   "id": "seed-a4d0ba60",
+   "cat": "Flux",
+   "titre": "Flux Vital",
+   "corps": "🛡️ Lié au corps, à l’énergie physique et à la force intérieure.\n\n· améliorer les capacités physiques\n· renforcer le corps\n· augmenter vitesse et réflexes\n· développer des techniques de combat\n· manipuler l’énergie interne\n\nLe Chakra est une manifestation du Flux Vital.\nMaison associée : Dravaryn."
+  },
+  {
+   "id": "seed-c1e5ea31",
+   "cat": "Flux",
+   "titre": "Flux Spirituel",
+   "corps": "👁️ Lié à l’esprit, à la volonté et à l’identité.\n\nChaque utilisateur développe une capacité extrêmement personnelle : deux utilisateurs peuvent avoir des pouvoirs totalement différents.\n\nLe Nen en est une manifestation particulièrement avancée. Ce Flux récompense la créativité, la personnalité et la maîtrise de soi.\nMaison associée : Vaelith."
+  },
+  {
+   "id": "seed-6bc95d1b",
+   "cat": "Flux",
+   "titre": "Flux Arcanique",
+   "corps": "🪄 Une énergie structurée par la connaissance.\n\n· lancer des sorts\n· créer des enchantements\n· utiliser des runes\n· fabriquer des artefacts\n· réaliser des rituels\n· manipuler différentes formes de magie\n\nLa magie des sorciers appartient principalement à ce Flux. Sa maîtrise dépend beaucoup de l’apprentissage.\nMaison associée : Eldrane."
+  },
+  {
+   "id": "seed-f53a7079",
+   "cat": "Flux",
+   "titre": "Flux Occulte",
+   "corps": "🌑 Une énergie dangereuse, liée aux émotions, aux peurs, aux traumatismes et aux aspects sombres de l’esprit.\n\n· techniques occultes\n· manipulation d’énergie négative\n· manifestations surnaturelles\n· techniques personnelles extrêmement puissantes\n· parfois : un domaine, un espace lié à l’utilisateur\n\nElle est difficile à contrôler. Plus son utilisateur perd le contrôle, plus elle devient dangereuse — surveille la jauge de Contrôle de ta fiche.\nMaison associée : Noctheris."
+  },
+  {
+   "id": "seed-38cb0ad3",
+   "cat": "Maisons",
+   "titre": "Maison Dravaryn",
+   "corps": "🛡️ Maîtres du Flux Vital.\n« Le corps est le premier temple. »\n\nRéputés pour leur discipline, leur force physique et leur maîtrise du combat. Traditionnellement les guerriers et protecteurs d’Elvaris."
+  },
+  {
+   "id": "seed-de663e1c",
+   "cat": "Maisons",
+   "titre": "Maison Vaelith",
+   "corps": "👁️ Héritiers du Flux Spirituel.\n« La volonté façonne la réalité. »\n\nConnus pour leurs capacités uniques : chaque membre développe une manifestation différente. Mystérieux et imprévisibles."
+  },
+  {
+   "id": "seed-9816c60d",
+   "cat": "Maisons",
+   "titre": "Maison Eldrane",
+   "corps": "🪄 Maîtres du Flux Arcanique.\n« La connaissance est la vraie puissance. »\n\nUne famille d’érudits, de mages et de chercheurs. Grande influence sur la bibliothèque et les recherches magiques d’Elvaris."
+  },
+  {
+   "id": "seed-524a554c",
+   "cat": "Maisons",
+   "titre": "Maison Noctheris",
+   "corps": "🌑 Enfants du Flux Occulte.\n« Dans l’ombre naît la vérité. »\n\nIls étudient les formes les plus dangereuses du Flux. Respectés autant que craints. Certains membres auraient autrefois pratiqué des expériences interdites."
+  },
+  {
+   "id": "seed-352916d3",
+   "cat": "Lieux",
+   "titre": "Forteresse d’Elvaris",
+   "corps": "La principale académie connue d’Astréïa, au sommet des Monts Brumeux.\n\nUn immense château ancien, d’architecture médiévale et magique : murs de pierre, grandes salles, couloirs interminables, torches, chandeliers, escaliers, tableaux enchantés, armures, bibliothèques, salles d’entraînement, passages secrets, salles interdites, anciennes tours.\n\nAstréïa n’est pas un monde moderne : aucune technologie moderne dans la vie quotidienne."
+  },
+  {
+   "id": "seed-38551e5b",
+   "cat": "Lieux",
+   "titre": "Les Monts Brumeux",
+   "corps": "L’immense région montagneuse qui porte Elvaris à son sommet. La brume ne se lève jamais complètement."
+  },
+  {
+   "id": "seed-f8e7d0a7",
+   "cat": "Lieux",
+   "titre": "La Chambre du Cœur Astral",
+   "corps": "Au cœur d’Elvaris, une salle secrète. Elle contiendrait un fragment extrêmement pur de l’Astréïon.\n\nScellée depuis plusieurs siècles. Personne ne sait exactement ce qui se trouve derrière la porte. Chaque Maison en détient des informations différentes. La plupart des élèves en ignorent jusqu’à l’existence."
+  },
+  {
+   "id": "seed-308ef8be",
+   "cat": "Organisations",
+   "titre": "L’Ordre du Voile Noir",
+   "corps": "Une organisation secrète, dans l’ombre.\n\nSes membres pensent que la Fracture Céleste ne doit pas être réparée : ils veulent réunir les Flux afin de recréer l’Astréïon originel.\n\nLeur véritable objectif reste inconnu. Certains pensent qu’ils veulent sauver le monde. D’autres, le contrôler. Et certains pensent que leur chef connaît la véritable raison de la Fracture."
+  },
+  {
+   "id": "seed-1c38f124",
+   "cat": "Règles",
+   "titre": "Les Flux ne sont pas des classes",
+   "corps": "Un joueur ne choisit pas une « classe » : il choisit une voie énergétique.\n\nDeux personnages du même Flux peuvent être totalement différents. Un utilisateur du Flux Spirituel peut être combattant, stratège, assassin, protecteur, spécialiste, guérisseur — ou inventer quelque chose d’inédit.\n\nLe Gardien encourage la créativité tout en maintenant l’équilibre."
+  },
+  {
+   "id": "seed-ab627ae7",
+   "cat": "Règles",
+   "titre": "Règles du RP",
+   "corps": "· Pas de godmod — on ne décide pas qu’une attaque touche automatiquement un autre joueur.\n· Pas de powergaming abusif — on ne possède pas toutes les capacités dès le début.\n· Cohérence — même les personnages puissants ont des limites.\n· Liberté créative — invente tes techniques et ton style de combat."
+  },
+  {
+   "id": "seed-b0514cc5",
+   "cat": "Règles",
+   "titre": "Le Gardien des Chroniques",
+   "corps": "Le titre du MJ. Il contrôle le monde, les PNJ, les événements, les ennemis, les anomalies, les secrets, les conséquences des actions des joueurs et l’évolution du scénario.\n\nIl peut modifier ou ajouter du lore pour faire avancer l’histoire — y compris de nouveaux Flux."
+  },
+  {
+   "id": "seed-209ca1e6",
+   "cat": "Règles",
+   "titre": "L’arrivée à Astréïa",
+   "corps": "Les personnages ne sont pas forcément originaires d’Astréïa : ils peuvent venir de mondes différents.\n\nAvant leur arrivée, chacun mène une existence normale. Puis une lumière astrale apparaît devant lui. À son contact, le monde semble s’arrêter, et une voix inconnue déclare :\n\n« Ton âme a été reconnue. »\n\nUne marque lumineuse apparaît brièvement sur son corps. Puis tout disparaît. Le personnage se réveille à Astréïa, dans un lieu inconnu, sans comprendre comment il est arrivé là. Ensemble ou séparément — puis conduits vers Elvaris."
+  },
+  {
+   "id": "seed-685e2622",
+   "cat": "Règles",
+   "titre": "Progression",
+   "corps": "Les personnages commencent relativement faibles et doivent apprendre à maîtriser leur Flux.\n\nLa progression peut apporter : nouvelles techniques, meilleure maîtrise énergétique, transformations, armes ou artefacts, capacités personnelles, éveil, évolution du Flux, découverte de pouvoirs cachés.\n\nAucun personnage ne commence avec un pouvoir invincible. La puissance se gagne au cours de l’histoire."
+  }
+ ],
+ "roster": [],
+ "chronique": []
+}

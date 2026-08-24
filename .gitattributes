@@ -1,0 +1,8 @@
+# Le projet fait des allers-retours Mac <-> Windows : on stocke tout en LF
+# dans le depot, sinon build.py (qui ecrit avec les fins de ligne du systeme)
+# produirait un diff sur chaque ligne a chaque changement de machine.
+* text=auto
+
+*.png -text
+*.webp -text
+*.ico -text

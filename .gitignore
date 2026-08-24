@@ -1,0 +1,8 @@
+# Etat local de wrangler (dont la base des Durable Objects en dev)
+.wrangler/
+node_modules/
+
+# Sous-produits des scripts de construction : regeneres a chaque build
+src/__pycache__/
+src/_app.js
+src/_logo-apercu.png
