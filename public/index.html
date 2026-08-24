@@ -153,6 +153,8 @@ select.inp{cursor:pointer}
 .gate.hide{display:none}
 .gate-art{position:relative; display:flex; align-items:center; justify-content:center; min-height:min(58vh,520px)}
 #gateDie{width:100%; height:min(58vh,520px); display:block}
+.jr.meneur{border-color:var(--laiton,#c8a24a); box-shadow:0 0 0 1px var(--laiton,#c8a24a) inset}
+.jr.meneur::before{content:"º6 "; opacity:.85}
 .gate-art::after{
   content:""; position:absolute; inset:12% 8%; border-radius:50%;
   background:radial-gradient(circle, var(--brass-glow), transparent 66%);
@@ -1073,7 +1075,9 @@ let saveT;
 function save(){ clearTimeout(saveT); saveT=setTimeout(()=>{
   try{ localStorage.setItem(KEY,JSON.stringify(DB)); }
   catch(e){ toast("Sauvegarde impossible — espace saturé"); }
-},180); }
+},180);
+  if(enDirect) Comptes.sauverDonnees();   // en direct, tes fiches suivent le compte
+}
 function blankUserData(){ return {characters:[], activeCharId:null, rolls:[], publies:{}}; }
 function ud(){ const u=DB.session; if(!u) return null; if(!DB.data[u]) DB.data[u]=blankUserData(); return DB.data[u]; }
 function me(){ return DB.session? DB.users[DB.session] : null; }
@@ -2454,13 +2458,73 @@ const Monde=(function(){
 const CIBLE="live";
 const enDirect = CIBLE==="live";
 
+/* ============================================================
+   COMPTES — en direct, ils vivent sur le serveur : ton compte et tes fiches
+   te suivent d'un appareil a l'autre. Sur la cible « artifact » il n'y a pas
+   de serveur, on garde alors le registre local du navigateur.
+   ============================================================ */
+const JKEY="astreia.jeton";
+const Comptes=(function(){
+  let jeton=null, envoiT=null;
+  try{ jeton=localStorage.getItem(JKEY); }catch(e){}
+
+  async function appel(voie, corps){
+    const r=await fetch("/api/"+voie,{method:"POST",
+      headers:{"content-type":"application/json"}, body:JSON.stringify(corps||{})});
+    let d={}; try{ d=await r.json(); }catch(e){}
+    if(!r.ok) throw new Error(d.err||"Le serveur n'a pas répondu.");
+    return d;
+  }
+  function poser(j){
+    jeton=j;
+    try{ j? localStorage.setItem(JKEY,j) : localStorage.removeItem(JKEY); }catch(e){}
+  }
+  /** Installe le compte renvoyé par le serveur dans DB : tout le reste de
+   *  l'application continue de lire DB.users / DB.data sans rien savoir. */
+  function installer(d){
+    const cle=d.compte.pseudo.toLowerCase();
+    const ancien=DB.users[cle]||{};
+    DB.users[cle]={pseudo:d.compte.pseudo, role:d.compte.role, createdAt:d.compte.cree,
+                   theme:ancien.theme||"auto", prefs:ancien.prefs||{}};
+    DB.data[cle]=d.donnees||blankUserData();
+    DB.session=cle;
+    return DB.users[cle];
+  }
+  return {
+    get jeton(){ return jeton; },
+    async inscrire(pseudo,mdp){ const d=await appel("inscription",{pseudo,mdp}); poser(d.jeton); return installer(d); },
+    async connecter(pseudo,mdp){ const d=await appel("connexion",{pseudo,mdp}); poser(d.jeton); return installer(d); },
+    async reprendre(){
+      if(!jeton) return null;
+      try{ return installer(await appel("moi",{jeton})); }catch(e){ poser(null); return null; }
+    },
+    async deconnecter(){ const j=jeton; poser(null); if(j){ try{ await appel("deconnexion",{jeton:j}); }catch(e){} } },
+    /** Les fiches privées remontent au serveur sans se presser : elles changent
+     *  a chaque frappe, inutile d'envoyer a chaque caractere. */
+    sauverDonnees(){
+      if(!jeton||!DB.session) return;
+      clearTimeout(envoiT);
+      envoiT=setTimeout(()=>{ appel("donnees",{jeton,donnees:DB.data[DB.session]}).catch(()=>{}); },900);
+    },
+    membres(){ return appel("membres",{jeton}); },
+    changerRole(cible,role){ return appel("role",{jeton,cible,role}); },
+  };
+})();
+
+/** Rôle courant, tel que le serveur l'a confirmé à la connexion. */
+let MON_ROLE="joueur";
+function appliquerRole(r){
+  MON_ROLE = r==="meneur" ? "meneur" : "joueur";
+  document.body.dataset.role = MON_ROLE;
+}
+
 const Reseau=(function(){
   let ws=null, moi="?", etat="hors", envoiT=null, dernierEnvoi=0, joueurs=[], amorce=false;
   function adresse(){
     const u=new URL(location.href);
     const t=u.searchParams.get("table")||"astreia";
     return (location.protocol==="https:"?"wss://":"ws://")+location.host
-      +"/ws?table="+encodeURIComponent(t)+"&nom="+encodeURIComponent(moi);
+      +"/ws?table="+encodeURIComponent(t)+"&jeton="+encodeURIComponent(Comptes.jeton||"");
   }
   function nomTable(){
     const p=new URL(location.href).searchParams.get("table");
@@ -2478,6 +2542,7 @@ const Reseau=(function(){
     ws.onmessage=ev=>{
       let m; try{ m=JSON.parse(ev.data); }catch(e){ return; }
       if(m.t==="init"){
+        if(m.moi){ moi=m.moi.pseudo; appliquerRole(m.moi.role); }
         joueurs=m.joueurs||[];
         if(m.camp){ CAMP=m.camp; baseRev=CAMP.rev||0; appliquerEtat(true); }
         else { amorce=true; envoyerEtat(true); }      // table vide : on l'amorce
@@ -2493,6 +2558,11 @@ const Reseau=(function(){
         tk.x=m.x; tk.y=m.y;
         Board.draw(); majVignette();
       }else if(m.t==="qui"){ joueurs=m.joueurs||[]; majPartage(); }
+      else if(m.t==="refus"){
+        // Le serveur a gardé sa version : on explique plutôt que de laisser
+        // croire que le changement est passé.
+        toast("Réservé au meneur : "+(m.quoi||[]).join(", "));
+      }
     };
   }
   function envoyerEtat(immediat){
@@ -2566,7 +2636,11 @@ function majPartage(){
   if(enDirect){
     const e=Reseau.etat, js=Reseau.joueurs;
     el.className="partage"+(e==="ok"?"":" enattente");
-    const pastilles=[...new Set(js)].map(n=>`<span class="jr${n===Reseau.moi?" moi":""}">${esc(n)}</span>`).join("");
+    const vus=new Set();
+    const pastilles=js.filter(j=>{
+      const nom=j&&j.nom; if(!nom||vus.has(nom)) return false; vus.add(nom); return true;
+    }).map(j=>`<span class="jr${j.nom===Reseau.moi?" moi":""}${j.role==="meneur"?" meneur":""}"
+        title="${j.role==="meneur"?"Meneur de la table":"Joueur"}">${esc(j.nom)}</span>`).join("");
     el.innerHTML= e==="ok"
       ? `<span class="pt-etat ok">● En direct</span><span class="jrs">${pastilles}</span>
          <span class="pt-detail">Table « ${esc(Reseau.nomTable())} »</span>`
@@ -2803,7 +2877,24 @@ $("#authForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const pseudo=$("#pseudo").value.trim(), pw=$("#pw").value, err=$("#authErr");
   if(pseudo.length<2){ err.textContent="Il faut au moins 2 caractères."; return; }
-  if(pw.length<4){ err.textContent="Le sceau fait au moins 4 caractères."; return; }
+  const mini = enDirect?6:4;
+  if(pw.length<mini){ err.textContent=`Le sceau fait au moins ${mini} caractères.`; return; }
+
+  if(enDirect){
+    if(authMode==="signup" && pw!==$("#pw2").value){
+      err.textContent="Les deux sceaux ne correspondent pas."; return;
+    }
+    const bouton=$("#authGo"); bouton.disabled=true; err.textContent="…";
+    try{
+      if(authMode==="signup"){ await Comptes.inscrire(pseudo,pw); }
+      else { await Comptes.connecter(pseudo,pw); }
+      save(); enterApp(); err.textContent="";
+      if(authMode==="signup") toast("Ton âme a été reconnue.");
+    }catch(ex){ err.textContent=ex.message; }
+    finally{ bouton.disabled=false; }
+    return;
+  }
+
   const cle=pseudo.toLowerCase(), existe=DB.users[cle];
   if(authMode==="signup"){
     if(existe){ err.textContent="Ce nom est déjà pris dans ce navigateur."; return; }
@@ -2835,7 +2926,8 @@ function enterApp(){
   $("#pw").value=""; if($("#pw2")) $("#pw2").value="";
   if(enDirect) Reseau.connecter(u.pseudo); else brancherPartage();
 }
-$("#logout").addEventListener("click",()=>{
+$("#logout").addEventListener("click",async ()=>{
+  if(enDirect) await Comptes.deconnecter();
   DB.session=null; save();
   $("#app").hidden=true; $("#gate").classList.remove("hide");
   setAuthMode("login"); if(!stopGate) stopGate=ambientDie($("#gateDie"));
@@ -3184,7 +3276,13 @@ addEventListener("beforeunload",()=>{
    DÉMARRAGE
    ============================================================ */
 load(); chargerCampagne();
-if(DB.session && DB.users[DB.session]) enterApp();
+if(enDirect){
+  // Un jeton valide en reserve : on rouvre la session sans rien demander.
+  Comptes.reprendre().then(u=>{
+    if(u){ enterApp(); return; }
+    setAuthMode("signup"); stopGate=ambientDie($("#gateDie"));
+  });
+}else if(DB.session && DB.users[DB.session]) enterApp();
 else { setAuthMode(DB.users&&Object.keys(DB.users).length?"login":"signup"); stopGate=ambientDie($("#gateDie")); }
 })();
 </script>

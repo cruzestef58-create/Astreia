@@ -6,11 +6,22 @@ compatibility_date = "2025-06-01"
 directory = "./public"
 binding = "ASSETS"
 
+# Une table de jeu : l'etat de campagne et sa diffusion en direct.
 [[durable_objects.bindings]]
 name = "TABLES"
 class_name = "Table"
+
+# Le registre des comptes, unique pour tout le site : les comptes suivent le
+# joueur d'une table a l'autre, ils ne peuvent donc pas vivre dans une table.
+[[durable_objects.bindings]]
+name = "COMPTES"
+class_name = "Comptes"
 
 # Durable Objects sur stockage SQLite : la variante disponible sur le plan gratuit.
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["Table"]
+
+[[migrations]]
+tag = "v2"
+new_sqlite_classes = ["Comptes"]

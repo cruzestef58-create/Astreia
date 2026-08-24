@@ -16,8 +16,23 @@ Tout est connecté en direct :
 - le Codex, l'initiative et les personnages publiés sont communs à la table ;
 - les joueurs connectés s'affichent en haut de l'écran.
 
-Restent privés à chaque navigateur : les comptes, les fiches non publiées et
-les jets personnels.
+## Les comptes
+
+Chacun se crée un compte sur le site : pseudo et mot de passe. Le compte vit
+sur le serveur, donc **il te suit** — même compte depuis le PC, le téléphone
+ou chez un ami, avec tes fiches. Le mot de passe n'est jamais stocké en clair :
+seul un dérivé PBKDF2-SHA256 salé est conservé.
+
+**Le premier compte créé est le meneur.** Lui seul peut changer de carte,
+écrire le Codex, régler l'initiative ou ajouter des pions ; il promeut ou
+rétrograde les autres. Ce n'est pas qu'une affaire de boutons : le serveur
+refuse ces modifications quand elles viennent d'un joueur, même si son
+navigateur est trafiqué.
+
+Ce qu'un joueur peut faire : déplacer les pions, publier et modifier **sa**
+fiche, ajouter ses jets à la chronique. Rien de ce qui appartient aux autres.
+
+Restent privés : les fiches non publiées et les jets personnels.
 
 ## L'installer sur le bureau
 

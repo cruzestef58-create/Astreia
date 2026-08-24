@@ -5,7 +5,8 @@ cd /d "%~dp0src" || exit /b 1
 
 python campagne.py || goto :echec
 python build.py    || goto :echec
-node verif.js      || goto :echec
+node verif.js          || goto :echec
+node verif-serveur.mjs || goto :echec
 
 echo.
 echo Site reconstruit et verifie.
