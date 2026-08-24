@@ -2122,10 +2122,13 @@ function renderInit(){
    ============================================================ */
 const Monde=(function(){
   const cv=$("#mondeCanvas");
-  let g=null, dpr=1, N=52, H=null, tours=null;
+  let g=null, dpr=1, N=72, H=null, tours=null, CELLS=null;
   let cam={yaw:.55, pitch:.56, dist:3.35, cible:[0,.46,0]};
   let anim=null, raf=null, focus=null, sel=null, cibles=[], glisse=null, pret=false, survol=null;
-  const LUM=V.norm([-.45,.86,.42]);
+  // La camera de repos regarde depuis +x/+z. Une lumiere a -x laissait toute
+  // la face visible dans l'ombre du ciel. On la ramene sur l'epaule gauche de
+  // la camera : la face vue est eclairee, le flanc ouest garde son relief.
+  const LUM=V.norm([-.18,.74,.65]);
   const DEPART={yaw:-.75, pitch:1.34, dist:8.2};
   const REPOS ={yaw:.55,  pitch:.56,  dist:3.35};
 
@@ -2145,6 +2148,7 @@ const Monde=(function(){
     const cr=1-Math.abs(fbm(x*2.1+11,z*2.1+7)*2-1); // bruit "ridged" : des cretes, pas des bosses
     h+=.36*cr*Math.exp(-(d*d)/.52);
     h+=.10*(fbm(x*5.5+31,z*5.5+17)-.5);
+    h+=.035*(fbm(x*13+53,z*13+29)-.5)*clamp(1-d/.9,0,1);  // rugosite fine, pas dans la brume
     h-=.30*d;
     if(h>.88) h=.88+(h-.88)*.18;                   // plateau sommital : l'assise d'Elvaris
     return Math.max(0,h*(1-clamp((d-.72)/.30,0,1)));  // le monde s'efface dans la brume
@@ -2159,6 +2163,72 @@ const Monde=(function(){
     tours=[[0,0,.085,.085,.30],[-.10,-.06,.05,.05,.20],[.10,-.07,.05,.05,.22],
            [-.11,.08,.045,.045,.17],[.11,.09,.045,.045,.19],[0,-.15,.07,.035,.12],
            [0,.16,.07,.035,.11],[-.17,0,.035,.07,.13],[.17,.01,.035,.07,.14]];
+    CELLS=cellules();
+  }
+
+  /* --- habillage du relief ---------------------------------------------
+     Tout ce qui ne depend pas de la camera est calcule une seule fois : le
+     soleil ne bouge pas, le terrain non plus. La camera n'a plus qu'a
+     projeter et trier, ce qui laisse de la marge pour un maillage plus fin. */
+  const NIVEAU_EAU=.052;                 // hauteur de la nappe, meme echelle que alt()*ALT
+  const NEIGE=[246,250,255], ROCHE=[128,138,170], EBOULIS=[158,152,156],
+        FORET=[46,84,66],    PRE=[112,136,98],    SABLE=[178,166,132];
+
+  /** Ombre portee : on remonte vers la lumiere et on regarde si une crete
+   *  passe au-dessus. C'est ce qui manquait le plus au relief. */
+  function ombreEn(x,z,y){
+    let bloc=0, d=.028;
+    for(let k=0;k<18;k++){
+      const sx=x+LUM[0]*d, sz=z+LUM[2]*d;
+      if(sx<-1||sx>1||sz<-1||sz>1) break;
+      const ecart=alt(sx,sz)*ALT-(y+LUM[1]*d);
+      if(ecart>0) bloc=Math.max(bloc, clamp(ecart*8,0,1));
+      d+=.030;
+    }
+    return bloc;
+  }
+
+  function cellules(){
+    const out=[];
+    for(let j=0;j<N;j++) for(let i=0;i<N;i++){
+      const x0=(i/N)*2-1, x1=((i+1)/N)*2-1, z0=(j/N)*2-1, z1=((j+1)/N)*2-1;
+      const cx=(x0+x1)/2, cz=(z0+z1)/2, dd=Math.hypot(cx,cz);
+      if(dd>.97) continue;                       // bord circulaire, pas de plaque carree
+      const p=[P(x0,z0),P(x1,z0),P(x1,z1),P(x0,z1)];
+      // Ordre des operandes : cross(p1-p0, p3-p0) donne une composante verticale
+      // NEGATIVE — la facette se croit tournee vers le bas. Le code d'origine
+      // ne le voyait pas car clamp(dot,0,1) retombait sur une constante.
+      const nrm=V.norm(V.cross(V.sub(p[3],p[0]),V.sub(p[1],p[0])));
+      const y=(p[0][1]+p[2][1])/2, h=y/ALT;
+      const pente=1-clamp(nrm[1],0,1);
+
+      // Par altitude ET par pente : la neige ne tient pas sur un a-pic,
+      // la roche affleure sur les versants raides.
+      // Attention au calibrage : sur ce cone la pente courante d'une facette
+      // vaut deja ~.57. Un seuil bas ferait affleurer la roche partout et
+      // effacerait completement l'etagement par altitude.
+      let c;
+      // Seuils cales sur la vraie distribution : pente mediane 0, maximum .72.
+      if(h>.62)       c=melange(NEIGE, EBOULIS, clamp((pente-.46)*3.4,0,.72));
+      else if(h>.24)  c=melange(melange(ROCHE,EBOULIS,.35), NEIGE, clamp((h-.24)/.38,0,1)*.70);
+      else if(h>.09)  c=melange(melange(PRE,FORET,clamp(1-(h-.09)/.17,0,1)*.8), ROCHE, clamp((pente-.44)*3.2,0,.80));
+      else            c=melange(SABLE, PRE, clamp((h-.035)/.055,0,1));
+
+      const jour=clamp(V.dot(nrm,LUM),0,1);
+      const ciel=.5+.5*nrm[1];                   // lumiere diffuse du ciel : les ombres ne virent pas au noir
+      // Le versant tourne vers la camera est aussi celui qui fuit le soleil :
+      // sans une part d'ambiante genereuse, tout le massif vire au noir.
+      const f=.40*ciel + .60*jour*(1-.50*ombreEn(cx,cz,y));
+      c=c.map(v=>v*(.42+.70*f));
+
+      // Courbes de niveau, comme sur une carte d'etat-major : le relief se lit
+      // meme la ou la lumiere est plate.
+      const bande=(y/.05)%1;
+      if(bande<.09) c=melange(c,[10,14,28],.20);
+
+      out.push({p,c,dd});
+    }
+    return out;
   }
   const alt=(x,z)=>{
     const i=clamp(Math.round((x+1)/2*N),0,N), j=clamp(Math.round((z+1)/2*N),0,N);
@@ -2219,7 +2289,11 @@ const Monde=(function(){
   }
   function rrect(g,x,y,w,h,r){ if(g.roundRect){ g.beginPath(); g.roundRect(x,y,w,h,r); } else { g.beginPath(); g.rect(x,y,w,h); } }
   const melange=(a,b,t)=>[a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t, a[2]+(b[2]-a[2])*t];
-  const rgb=c=>`rgb(${c[0]|0},${c[1]|0},${c[2]|0})`;
+  // Borner est indispensable : au-dela de 255, rgb() est invalide, le canvas
+  // ignore l'affectation et repeint avec la couleur precedente — d'ou des
+  // facettes marbrees sans rapport avec le relief.
+  const oct=v=>v<0?0:v>255?255:v|0;
+  const rgb=c=>`rgb(${oct(c[0])},${oct(c[1])},${oct(c[2])})`;
   function hex2(h){ h=h.replace("#",""); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
 
   function dessiner(){
@@ -2236,24 +2310,57 @@ const Monde=(function(){
     g.fillStyle=cg; g.fillRect(0,0,W,Ht);
 
     const faces=[];
-    const NEIGE=[228,235,248], ROCHE=[116,124,148], VALLEE=[62,76,102], BRUME=melange(cielA,[132,152,196],.55);
-    for(let j=0;j<N;j++) for(let i=0;i<N;i++){
-      const x0=(i/N)*2-1, x1=((i+1)/N)*2-1, z0=(j/N)*2-1, z1=((j+1)/N)*2-1;
-      const p=[P(x0,z0),P(x1,z0),P(x1,z1),P(x0,z1)];
-      const q=p.map(v=>projeter(B,v,W,Ht));
+    const BRUME=melange(cielA,[132,152,196],.55);
+    // Le terrain est deja habille : il ne reste que la projection et la brume,
+    // qui elles dependent de la camera.
+    for(const cl of CELLS){
+      const q=cl.p.map(v=>projeter(B,v,W,Ht));
       if(q.some(v=>!v)) continue;
-      const n=V.norm(V.cross(V.sub(p[1],p[0]),V.sub(p[3],p[0])));
-      const h=(p[0][1]+p[2][1])/2/ALT;
-      let c = h>.70 ? NEIGE : h>.30 ? ROCHE : VALLEE;
-      if(h>.56&&h<=.70) c=melange(ROCHE,NEIGE,(h-.56)/.14);
-      const lit=.44+.56*clamp(V.dot(n,LUM),0,1);
-      c=c.map(v=>v*lit);
       const prof=(q[0][2]+q[2][2])/2;
-      c=melange(c,BRUME,clamp((prof-1.9)/6,0,.62));
-      const dd=Math.hypot((x0+x1)/2,(z0+z1)/2);
-      c=melange(c,BRUME,clamp((dd-.52)/.34,0,1)*.85);     // brume au pied du massif
-      if(dd>.97) continue;                                 // bord circulaire, pas de plaque carree
+      // La brume de profondeur commencait des 1.9, donc sur le massif lui-meme :
+      // elle lavait les couleurs au lieu d'eloigner l'arriere-plan.
+      let c=melange(cl.c,BRUME,clamp((prof-2.8)/7,0,.55));
+      c=melange(c,BRUME,clamp((cl.dd-.52)/.34,0,1)*.85);   // brume au pied du massif
       faces.push({q,c:rgb(c),d:prof});
+    }
+
+    // La nappe d'eau : un vrai plan, tesselle pour que le tri par profondeur
+    // le fasse passer devant ou derriere le relief selon le point de vue.
+    {
+      const EAU=[34,72,102], EAU_PROF=[14,34,58], ECUME=[196,214,232];
+      const anneaux=22, secteurs=40, R=.965;   // assez fin pour que la profondeur ne fasse pas d'anneaux
+      for(let b=0;b<anneaux;b++){
+        const r0=R*b/anneaux, r1=R*(b+1)/anneaux;
+        for(let a=0;a<secteurs;a++){
+          const a0=a/secteurs*6.2832, a1=(a+1)/secteurs*6.2832;
+          const cx=Math.cos((a0+a1)/2)*(r0+r1)/2, cz=Math.sin((a0+a1)/2)*(r0+r1)/2;
+          const fond=alt(cx,cz)*ALT;
+          if(fond>=NIVEAU_EAU) continue;                   // la terre emerge : pas d'eau ici
+          const p=[[Math.cos(a0)*r0,NIVEAU_EAU,Math.sin(a0)*r0],
+                   [Math.cos(a1)*r0,NIVEAU_EAU,Math.sin(a1)*r0],
+                   [Math.cos(a1)*r1,NIVEAU_EAU,Math.sin(a1)*r1],
+                   [Math.cos(a0)*r1,NIVEAU_EAU,Math.sin(a0)*r1]];
+          const q=p.map(v=>projeter(B,v,W,Ht));
+          if(q.some(v=>!v)) continue;
+          // Plus c'est profond, plus c'est sombre ; le rivage s'eclaircit.
+          const creux=clamp((NIVEAU_EAU-fond)/.09,0,1);
+          let c=melange(EAU,EAU_PROF,creux);
+          c=melange(ECUME,c,clamp(creux*7,0,1));           // liseré d'ecume, fin, seulement sur la greve
+
+          // Eclat du soleil : la normale de l'eau est verticale, il suffit de
+          // regarder si la bissectrice oeil-lumiere pointe vers le haut.
+          const mx=(p[0][0]+p[2][0])/2, mz=(p[0][2]+p[2][2])/2;
+          const vue=V.norm(V.sub(B.e,[mx,NIVEAU_EAU,mz]));
+          const demi=V.norm([vue[0]+LUM[0], vue[1]+LUM[1], vue[2]+LUM[2]]);
+          c=melange(c,[255,250,232],Math.pow(clamp(demi[1],0,1),42)*.75);
+
+          const prof=(q[0][2]+q[2][2])/2;
+          c=melange(c,BRUME,clamp((prof-1.9)/6,0,.62));
+          const dd=Math.hypot(cx,cz);
+          c=melange(c,BRUME,clamp((dd-.52)/.34,0,1)*.85);
+          faces.push({q,c:rgb(c),d:prof});
+        }
+      }
     }
     // Ailleurs : un eclat de monde en suspension
     {
